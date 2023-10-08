@@ -1,0 +1,45 @@
+<configuration>
+<!--    ConsoleAppender will send output to console-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} - [%X{requestId}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    File Appender will send log into file-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+&lt;!&ndash;        file name to store log&ndash;&gt;
+        <file>application.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{38} - %msg%n</pattern>
+        </encoder>
+    </appender>-->
+
+<!--    Rolling File Appender will send log into file. The file can be configured-->
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+<!--Max Sizw is 100 MB for each file-->
+            <maxFileSize>100MB</maxFileSize>
+<!--            keep 60 days-->
+            <maxHistory>60</maxHistory>
+<!--Total all file size is 20 GB-->
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+<!--    layout pattern : https://logback.qos.ch/manual/layouts.html-->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{45} - [%X{requestId}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    set log level for every logger in this package (com.barokah.java.logging) -->
+    <logger name="com.barokah.java.logging" level="trace"/>
+
+    <root level="debug">
+<!--        we can have more than one appender-->
+        <appender-ref ref="CONSOLE" />
+<!--        <appender-ref ref="FILE" />-->
+        <appender-ref ref="ROLLINGFILE"/>
+    </root>
+</configuration>
