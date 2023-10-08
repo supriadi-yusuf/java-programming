@@ -1,0 +1,30 @@
+https://maven.apache.org/
+
+membuat project
+- mvn archetype:generate
+- maven-archetype-quickstart
+
+maven lifecycle :
+- clean (delete target folder's content)
+- compile (compile source code)
+- test-compile (compile unit test)
+- test (run unit test)
+- package (create jar/war/ear)
+- install (local repo)
+- deploy (remote server)
+
+create jar :
+mvn package
+
+dependency scope :
+- compile : default. maksudnya dependency akan digunakan untuk build project, test project dan menjalankan project
+- test : hanya akan diinclude pada bagian test project
+
+mencari dependency :
+- https://search.maven.org
+- https://mvnrepository.com
+
+Assembly Plugin digunakan untuk membuat distribution file
+https://maven.apache.org/plugins/maven-assembly-plugin/
+perintah : mvn package assembly:single
+
