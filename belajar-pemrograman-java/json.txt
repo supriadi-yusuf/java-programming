@@ -1,0 +1,1 @@
+{"address":{"city":"Jakarta","country":"Indonesia","street":"Jalan 123"},"firstName":"Budi","lastName":"Nugraha","married":true,"age":30}
